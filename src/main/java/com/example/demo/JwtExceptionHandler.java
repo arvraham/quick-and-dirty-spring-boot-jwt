@@ -14,12 +14,16 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class JwtExceptionHandler extends ResponseEntityExceptionHandler {
     
+    
+    private static final String MSG = "{\"message\":\"Access token expired\"}";
+    
+    
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity handleExpiredJwt (
             ExpiredJwtException exception, WebRequest request) {
         
         return handleExceptionInternal(exception, 
-                exception.getMessage(), 
+                MSG, 
                 new HttpHeaders(),
                 HttpStatus.UNAUTHORIZED, 
                 request);

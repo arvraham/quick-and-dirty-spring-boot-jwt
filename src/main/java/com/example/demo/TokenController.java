@@ -36,7 +36,7 @@ public class TokenController {
             
         }
         
-        return new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED);
+        return UnauthorizedMessage.response(null);
         
     }
     
@@ -48,7 +48,7 @@ public class TokenController {
         
         return (token != null && JwtUtil.isAuthentic(token)) 
                 ? ResponseEntity.ok(JwtUtil.generate()) 
-                : new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED);
+                : UnauthorizedMessage.response(null);
         
         
     }
