@@ -18,19 +18,19 @@ There are three endpoints configured:
 
 1. `/token-auth` - Returns JWT for valid credentials
 
-        curl  localhost:8080/token-auth -H "Content-Type: application/json" -d '{"username":"letme","password":"in"}'
+        curl  localhost:8080/api/token-auth -H "Content-Type: application/json" -d '{"username":"letme","password":"in"}'
       
         ----> {"token":"eyJhbGciOiJIUzUxMiJ9......"}
 
 2. `/token-refresh` - refreshes a given JWT
 
-        curl  localhost:8080/token-refresh -H "Content-Type: application/json" -d '{"token":"eyJhbGciOiJIUzUxMiJ9......"}'
+        curl  localhost:8080/api/token-refresh -H "Content-Type: application/json" -d '{"token":"eyJhbGciOiJIUzUxMiJ9......"}'
         
         ----> {"token":"eyJhbGciOiJIUzUxMiJ9......"}
         
 3. `/secured` - A protected resource that is accessible if a request contains a valid token.
 
-        curl  localhost:8080/secured -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9......"
+        curl  localhost:8080/api/secret-stuff -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9......"
         
         ----> I like trains
 
